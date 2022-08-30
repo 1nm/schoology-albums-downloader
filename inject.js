@@ -1,1 +1,91 @@
-if(!0!==window.contentScriptInjected){window.contentScriptInjected=!0;const e=document.getElementsByClassName("thumbnail-image"),n=document.getElementsByClassName("page-title")[0],t=n?.innerHTML,l=[];for(const n of e){const e=n.style.backgroundImage.match(/^.*(https.*album_thumbnail\/(media_albums\/.*\.jpg)).*$/),t=e[1],i=t.replace("album_thumbnail","album_large"),o=`${window.origin}/system/files/${e[2]}`;l.push({thumbnail:t,large:i,full:o})}const i=document.createElement("button");i.innerHTML=`Download ${l.length} Photos`,i.type="button",i.className="link-btn",i.style="height: 30px",i.onclick=function(){console.log(`Zipping ${l.length} images to '${t}.zip' ...`),s.style.display="block",a.style.display="block";const e=new JSZip;var n=0;l.forEach((function(t,i){const o=`${i}.jpg`;e.file(o,new Promise((function(e,i){JSZipUtils.getBinaryContent(t.full,(function(t,o){if(t)i(t);else{e(o),n+=1;const t=parseInt(100*n/l.length);s.value=t,a.innerHTML=t+"%"}}))})),{binary:!0})})),e.generateAsync({type:"blob"},(function(e){n===l.length&&(a.innerHTML=`Zipping... ${parseInt(e.percent)}%`)})).then((function(e){s.style.display="none",s.value=0,a.innerHTML="0%",a.style.display="none",console.log(`Downloading '${t}.zip' ...`),saveAs(e,`${t}.zip`)}))};const o=document.createElement("div");o.style="padding-top: 12px;";const a=document.createElement("p");a.id="percentage",a.innerHTML="0%",a.style="display: none;";const s=document.createElement("progress");s.id="download-progress",s.max=100,s.value=0,s.style="display: none; margin-top: 10px; width: 240px;",o.appendChild(i),o.appendChild(s),o.appendChild(a),n.parentNode.insertBefore(o,n.nextSibling)}
+if (window.contentScriptInjected !== true) {
+  window.contentScriptInjected = true; // global scope
+  const thumbnails = document.getElementsByClassName('thumbnail-image');
+  const titleNode = document.getElementsByClassName('page-title')[0];
+  const title = titleNode?.innerHTML;
+
+  const urls = [];
+  for (const thumbnail of thumbnails) {
+    const match = thumbnail.style.backgroundImage.match(
+      /^.*(https.*album_thumbnail\/(media_albums\/.*\.jpg)).*$/
+    );
+    const thumbnailUrl = match[1];
+    const largeUrl = thumbnailUrl.replace('album_thumbnail', 'album_large');
+    const fullUrl = `${window.origin}/system/files/${match[2]}`;
+    urls.push({ thumbnail: thumbnailUrl, large: largeUrl, full: fullUrl });
+  }
+
+  if (urls.length > 0) {
+    const downloadButton = document.createElement('button');
+    downloadButton.innerHTML = `Download ${urls.length} Photos`;
+    downloadButton.type = 'button';
+    downloadButton.className = 'link-btn';
+    downloadButton.style = 'height: 30px';
+
+    downloadButton.onclick = function () {
+      console.log(`Zipping ${urls.length} images to '${title}.zip' ...`);
+      progress.style.display = 'block';
+      percentage.style.display = 'block';
+      const zip = new JSZip();
+      var downloadedCount = 0;
+      urls.forEach(function (url, index) {
+        const filename = `${index}.jpg`;
+        zip.file(
+          filename,
+          new Promise(function (resolve, reject) {
+            JSZipUtils.getBinaryContent(url['full'], function (err, data) {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+                downloadedCount += 1;
+                const percent = parseInt((downloadedCount * 100) / urls.length);
+                progress.value = percent;
+                percentage.innerHTML = percent + '%';
+              }
+            });
+          }),
+          { binary: true }
+        );
+      });
+
+      zip
+        .generateAsync({ type: 'blob' }, function updateCallback(metadata) {
+          if (downloadedCount === urls.length) {
+            percentage.innerHTML = `Zipping... ${parseInt(metadata.percent)}%`;
+          }
+        })
+        .then(function (content) {
+          progress.style.display = 'none';
+          progress.value = 0;
+          percentage.innerHTML = '0%';
+          percentage.style.display = 'none';
+          console.log(`Downloading '${title}.zip' ...`);
+          saveAs(content, `${title}.zip`);
+        });
+    };
+
+    const downloadButtonContainer = document.createElement('div');
+    downloadButtonContainer.style = 'padding-top: 12px;';
+
+    const percentage = document.createElement('p');
+    percentage.id = 'percentage';
+    percentage.innerHTML = '0%';
+    percentage.style = 'display: none;';
+
+    const progress = document.createElement('progress');
+    progress.id = 'download-progress';
+    progress.max = 100;
+    progress.value = 0;
+    progress.style = 'display: none; margin-top: 10px; width: 240px;';
+
+    downloadButtonContainer.appendChild(downloadButton);
+    downloadButtonContainer.appendChild(progress);
+    downloadButtonContainer.appendChild(percentage);
+
+    titleNode.parentNode.insertBefore(
+      downloadButtonContainer,
+      titleNode.nextSibling
+    );
+  }
+}

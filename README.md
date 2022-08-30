@@ -1,4 +1,4 @@
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/bnlnpabomfhiciklmbmmhhnhimhdaekk?color=success&style=flat-square)](https://chrome.google.com/webstore/detail/schoology-albums-downloader/bnlnpabomfhiciklmbmmhhnhimhdaekk?hl=en)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jgcfadnggfgjacphnaljlelcgaompkni?color=success&style=flat-square)](https://chrome.google.com/webstore/detail/schoology-albums-downloader/jgcfadnggfgjacphnaljlelcgaompkni?hl=en)
 
 # Schoology Albums Downloader
 
@@ -6,7 +6,7 @@ Schoology Albums Downloader (SAD) makes you HAPPY! 😊
 
 Download Schoology media albums with a single click!
 
-[<img src="https://user-images.githubusercontent.com/1180083/187444039-30a2193b-3393-42e1-ad68-79753711a7b0.png" width=64>](https://chrome.google.com/webstore/detail/schoology-albums-downloader/bnlnpabomfhiciklmbmmhhnhimhdaekk?hl=en)
+[<img src="https://user-images.githubusercontent.com/1180083/187444039-30a2193b-3393-42e1-ad68-79753711a7b0.png" width=64>](https://chrome.google.com/webstore/detail/schoology-albums-downloader/jgcfadnggfgjacphnaljlelcgaompkni?hl=en)
 
 ☝️ Click the icon to install the Chrome extension.
 
