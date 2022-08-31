@@ -18,4 +18,4 @@ Download Schoology media albums with a single click!
 
 3. Click the download button, a zip archive of the photos will be downloaded.
 
-   ![sad](https://user-images.githubusercontent.com/1180083/187604591-d91b4c8b-0c51-476f-9abf-ac5dd7482375.gif)
+   <img src="https://user-images.githubusercontent.com/1180083/187604591-d91b4c8b-0c51-476f-9abf-ac5dd7482375.gif" width='480px'/>
