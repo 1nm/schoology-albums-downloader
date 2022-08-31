@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build zip file
-      run: bash ./build.sh
+      run: bash ./.github/workflows/build.sh
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
@@ -22,7 +22,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload
-      run: bash ./upload.sh build/*.zip
+      run: bash ./.github/workflows/upload.sh build/*.zip
       env:
         CLIENT_ID: ${{secrets.CLIENT_ID}}
         CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
