@@ -26,4 +26,4 @@ All data is stored locally on the user's computer. No data is collected or sent 
 
 ## Disclaimer
 
-This Chrome extension is not endorsed by, affiliated with Schoology Inc. Schoology, the SCHOOLOGY® wordmark, and the S logo are registered and unregistered trademarks of Schoology, Inc. in the United States.
+This Chrome extension is not endorsed by or affiliated with Schoology, Inc. Schoology, the SCHOOLOGY® wordmark, and the S logo are registered and unregistered trademarks of Schoology, Inc. in the United States.
