@@ -7,7 +7,7 @@ if (window.contentScriptInjected !== true) {
   const urls = [];
   for (const thumbnail of thumbnails) {
     const match = thumbnail.style.backgroundImage.match(
-      /^.*(https.*album_thumbnail\/(media_albums\/.*\.jpg)).*$/
+      /^.*(https.*album_thumbnail\/(media_albums\/.*\.(jpg|jpeg|png|gif))).*$/i
     );
     const thumbnailUrl = match[1];
     const largeUrl = thumbnailUrl.replace('album_thumbnail', 'album_large');
