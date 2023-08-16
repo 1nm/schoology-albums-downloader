@@ -12,7 +12,7 @@
     "48": "images/icon48.png",
     "16": "images/icon16.png"
   },
-  "permissions": ["tabs", "activeTab", "scripting"],
+  "permissions": ["tabs", "scripting"],
   "host_permissions": ["https://*.schoology.com/album/*"],
   "action": {}
 }
