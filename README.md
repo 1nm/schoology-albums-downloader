@@ -2,9 +2,7 @@
 
 # Schoology Albums Downloader
 
-Schoology Albums Downloader (SAD) makes you HAPPY! 😊
-
-Download Schoology media albums with a single click!
+Schoology Albums Downloader is a Chrome extension that enables you to download Schoology media albums with just a single click!
 
 [<img src="https://user-images.githubusercontent.com/1180083/187444039-30a2193b-3393-42e1-ad68-79753711a7b0.png" width=64>](https://chrome.google.com/webstore/detail/schoology-albums-downloader/jgcfadnggfgjacphnaljlelcgaompkni?hl=en)
 
